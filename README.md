@@ -1,17 +1,16 @@
-# service-tom
+# service-Dan
 
 > Recommended restaurants page of Zagat
 
 ## Related Projects
 
-  - https://github.com/hrr42-fec5/service-allen
-  - https://github.com/hrr42-fec5/service-camryn
-  - https://github.com/hrr42-fec5/service-alex
+  - https://github.com/hrr42-fec5/service-tom
 
-## Table of Contents
-
-1. [Usage](#Usage)
-2. [Development](#development)
+## Recommendation CRUD API:
+Create/POST http://localhost:3005/api/restaurants
+Read/GET http://localhost:3005/api/restaurants/:restaurantId
+Update/PUT http://localhost:3005/api/restaurants/:restaurantId
+Delete/DELETE http://localhost:3005/api/restaurants/:restaurantId
 
 ## Usage
 
@@ -24,6 +23,5 @@
 From within the root directory:
 
 ```sh
-npm install -g webpack
 npm install
 ```
