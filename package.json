@@ -31,6 +31,7 @@
     "babel-loader": "^8.0.6",
     "babel-preset-react": "^6.24.1",
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "jquery": "^3.4.1",
