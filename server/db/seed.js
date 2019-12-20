@@ -1,8 +1,8 @@
 const faker = require('faker');
 const Recs = require('./recs.js');
+const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
 const seed = () => {
-
   var data = [];
   var genres = ['American', 'Asian', 'Mexican', 'Indian'];
   var prices = ['$', '$$', '$$$', '$$$$'];
@@ -21,7 +21,7 @@ const seed = () => {
     var k = Math.floor(Math.random() * 10) + 1;
     for (var j = 0; j < k; j++) {
       var title2 = faker.company.companyName();
-      var price = prices[Math.floor(Math.random() * Math.floor(prices.length))];
+      var price = prices[Math.floor(Math.random() * prices.length)];
       var text = faker.lorem.sentence();
       var rec = {
         pics: [],
@@ -36,16 +36,29 @@ const seed = () => {
         var picUrl = `https://zagat-restaurant-images.s3-us-west-1.amazonaws.com/photo${photoNum}.jpg`;
         rec.pics.push(picUrl);
       }
-
       recommendationPage.recs.push(rec);
     }
 
+    recommendationPage.recs = JSON.stringify(recommendationPage.recs);
     data.push(recommendationPage);
   }
 
-  Recs.insertMany(data)
-    .then(() => console.log('seeding script complete'))
-    .catch(err => console.log(err));
+  const csvWriter = createCsvWriter({
+    path: 'recommendations.csv',
+    header: [
+      {id: 'id', title: 'Id'},
+      {id: 'genre', title: 'Genre'},
+      {id: 'title', title: 'RestaurantTitle'},
+      {id: 'recs', title: 'recommendations'},
+    ]
+  });
+
+  csvWriter
+    .writeRecords(data)
+    .then(()=> console.log('The CSV file was written successfully'));
+  // Recs.insertMany(data)
+  //   .then(() => console.log('seeding script complete'))
+  //   .catch(err => console.log(err));
 };
 
 seed();
