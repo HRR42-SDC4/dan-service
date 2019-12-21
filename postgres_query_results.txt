@@ -1,0 +1,51 @@
+postgres:
+
+GET:
+postgres=# select * from recommendations where id=9999998;
+   id    | genre  |         title          |                                                                                               zecs
+---------+--------+------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 9999998 | Indian | Price, Mann and Corwin | [{"pics":["https://s3-us-west-1.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image660.jpg"],"title":"Smitham Inc","price":"$$$$","text":"Et eum fugiat."},{"pics":["https://s3-us-west-1..
+         |        |                        |.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image132.jpg"],"title":"Klocko and Sons","price":"$$","text":"Quod blanditiis doloribus."}]
+(1 row)
+
+Time: 0.339 ms
+
+POST:
+
+postgres=# INSERT INTO recommendations (id, genre, title, zecs) VALUES (10000001, 'Asian', 'TEST', '[{"pics":["https://s3-us-west-1.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image715.jpg"],"title":"O''Conner, Skiles and Kautzer","price":"$$$$","text":"Eos soluta possimus corporis cupiditate laboriosam voluptas culpa."}]');
+INSERT 0 1
+Time: 0.887 ms
+postgres=# select * from recommendations where id = 10000001;
+    id    | genre | title |                                                                                                       zecs
+----------+-------+-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 10000001 | Asian | TEST  | [{"pics":["https://s3-us-west-1.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image715.jpg"],"title":"O'Conner, Skiles and Kautzer","price":"$$$$","text":"Eos soluta possimus corporis cupiditate laborios.
+          |       |       |.am voluptas culpa."}]
+(1 row)
+
+Time: 0.293 ms
+
+
+PUT:
+postgres=# update recommendations set title = 'Update Test' where id=10000001;
+UPDATE 1
+Time: 1.482 ms
+postgres=# select * from recommendations where id = 10000001;
+    id    | genre |    title    |                                                                                                    zecs
+----------+-------+-------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 10000001 | Asian | Update Test | [{"pics":["https://s3-us-west-1.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image715.jpg"],"title":"O'Conner, Skiles and Kautzer","price":"$$$$","text":"Eos soluta possimus corporis cupiditate la.
+          |       |             |.boriosam voluptas culpa."}]
+(1 row)
+
+Time: 0.294 ms
+
+DELETE:
+
+postgres=# delete from recommendations where id=10000001;
+DELETE 1
+Time: 0.968 ms
+postgres=# select * from recommendations where id = 10000001;
+ id | genre | title | zecs
+----+-------+-------+------
+(0 rows)
+
+Time: 0.286 ms

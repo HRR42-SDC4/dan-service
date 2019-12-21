@@ -1,0 +1,122 @@
+Cassadra:
+
+GET:
+
+cqlsh:zagat> select * from recommendations where id=9999999;
+
+ id      | genre  | price                     | zecs
+---------+--------+---------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 9999999 | Indian | Wiza, Muller and Luettgen | [{"pics"":[""https://s3-us-west-1.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image715.jpg""],""title"":""O'Conner, Skiles and Kautzer"",""price"":""$$$$"",""text"":""Eos soluta possimus corporis cupiditate laboriosam voluptas culpa.""},{""pics"":[""https://s3-us-west-1.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image658.jpg"",""https://s3-us-west-1.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image688.jpg"",""https://s3-us-west-1.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image289.jpg""],""title"":""Tromp and Sons"",""price"":""$"",""text"":""Molestiae aut sunt exercitationem.""},{""pics"":[""https://s3-us-west-1.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image288.jpg"",""https://s3-us-west-1.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image382.jpg""],""title"":""Bauch - Jaskolski"",""price"":""$$$$"",""text"":""Nesciunt aperiam dolore animi sit sunt aliquam alias voluptate ut.""},{""pics"":[""https://s3-us-west-1.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image202.jpg"",""https://s3-us-west-1.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image434.jpg"",""https://s3-us-west-1.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image511.jpg"",""https://s3-us-west-1.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image316.jpg"",""https://s3-us-west-1.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image805.jpg""],""title"":""Koch - Gibson"",""price"":""$$$"",""text"":""Praesentium qui architecto quos vel voluptatum dolore.""},{""pics"":[""https://s3-us-west-1.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image290.jpg"",""https://s3-us-west-1.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image664.jpg"",""https://s3-us-west-1.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image773.jpg"",""https://s3-us-west-1.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image717.jpg""],""title"":""Mohr Group"",""price"":""$$$"",""text"":""Nihil et debitis est sapiente ea.""}]"
+
+(1 rows)
+
+Tracing session: 6ed2a240-2421-11ea-9959-f5497a9cd533
+
+ activity                                                                              | timestamp                  | source    | source_elapsed | client
+---------------------------------------------------------------------------------------+----------------------------+-----------+----------------+-----------
+                                                                    Execute CQL3 query | 2019-12-21 10:41:00.004000 | 127.0.0.1 |              0 | 127.0.0.1
+ Parsing select * from recommendations where id=9999999; [Native-Transport-Requests-1] | 2019-12-21 10:41:00.004000 | 127.0.0.1 |            134 | 127.0.0.1
+                                     Preparing statement [Native-Transport-Requests-1] | 2019-12-21 10:41:00.004000 | 127.0.0.1 |            248 | 127.0.0.1
+                     Executing single-partition query on recommendations [ReadStage-3] | 2019-12-21 10:41:00.005000 | 127.0.0.1 |            519 | 127.0.0.1
+                                            Acquiring sstable references [ReadStage-3] | 2019-12-21 10:41:00.005000 | 127.0.0.1 |            598 | 127.0.0.1
+                                               Merging memtable contents [ReadStage-3] | 2019-12-21 10:41:00.005000 | 127.0.0.1 |            656 | 127.0.0.1
+                                  Read 1 live rows and 0 tombstone cells [ReadStage-3] | 2019-12-21 10:41:00.005000 | 127.0.0.1 |            839 | 127.0.0.1
+                                                                      Request complete | 2019-12-21 10:41:00.005024 | 127.0.0.1 |           1024 | 127.0.0.1
+
+
+POST:
+
+cqlsh:zagat> INSERT INTO recommendations (id, genre, price, zecs) VALUES (10000001, 'Asian', 'TEST', '[{"pics":["https://s3-us-west-1.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image715.jpg"],"title":"O''Conner, Skiles and Kautzer","price":"$$$$","text":"Eos soluta possimus corporis cupiditate laboriosam voluptas culpa."}]');
+
+Tracing session: f11eb4a0-2426-11ea-9959-f5497a9cd533
+
+ activity                                                                                                                                                                                                                                                                                                                                                                  | timestamp                  | source    | source_elapsed | client
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------+-----------+----------------+-----------
+                                                                                                                                                                                                                                                                                                                                                        Execute CQL3 query | 2019-12-21 11:20:26.090000 | 127.0.0.1 |              0 | 127.0.0.1
+ Parsing INSERT INTO recommendations (id, genre, price, zecs) VALUES (10000001, 'Asian', 'TEST', '[{"pics":["https://s3-us-west-1.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image715.jpg"],"title":"O''Conner, Skiles and Kautzer","price":"$$$$","text":"Eos soluta possimus corporis cupiditate laboriosam voluptas culpa."}]'); [Native-Transport-Requests-1] | 2019-12-21 11:20:26.090000 | 127.0.0.1 |            124 | 127.0.0.1
+                                                                                                                                                                                                                                                                                                                         Preparing statement [Native-Transport-Requests-1] | 2019-12-21 11:20:26.090000 | 127.0.0.1 |            278 | 127.0.0.1
+                                                                                                                                                                                                                                                                                                           Determining replicas for mutation [Native-Transport-Requests-1] | 2019-12-21 11:20:26.091000 | 127.0.0.1 |           1221 | 127.0.0.1
+                                                                                                                                                                                                                                                                                                                                  Appending to commitlog [MutationStage-2] | 2019-12-21 11:20:26.091000 | 127.0.0.1 |           1518 | 127.0.0.1
+                                                                                                                                                                                                                                                                                                                      Adding to recommendations memtable [MutationStage-2] | 2019-12-21 11:20:26.093000 | 127.0.0.1 |           2708 | 127.0.0.1
+                                                                                                                                                                                                                                                                                                                                                          Request complete | 2019-12-21 11:20:26.099097 | 127.0.0.1 |           9097 | 127.0.0.1
+cqlsh:zagat> select * from recommendations where id=10000001;
+
+ id       | genre | price | zecs
+----------+-------+-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 10000001 | Asian |  TEST | [{"pics":["https://s3-us-west-1.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image715.jpg"],"title":"O'Conner, Skiles and Kautzer","price":"$$$$","text":"Eos soluta possimus corporis cupiditate laboriosam voluptas culpa."}]
+
+(1 rows)
+
+Tracing session: 3fbb1090-2427-11ea-9959-f5497a9cd533
+
+ activity                                                                               | timestamp                  | source    | source_elapsed | client
+----------------------------------------------------------------------------------------+----------------------------+-----------+----------------+-----------
+                                                                     Execute CQL3 query | 2019-12-21 11:22:37.977000 | 127.0.0.1 |              0 | 127.0.0.1
+ Parsing select * from recommendations where id=10000001; [Native-Transport-Requests-1] | 2019-12-21 11:22:37.977000 | 127.0.0.1 |            230 | 127.0.0.1
+                                      Preparing statement [Native-Transport-Requests-1] | 2019-12-21 11:22:37.977000 | 127.0.0.1 |            341 | 127.0.0.1
+                      Executing single-partition query on recommendations [ReadStage-2] | 2019-12-21 11:22:37.978000 | 127.0.0.1 |            503 | 127.0.0.1
+                                             Acquiring sstable references [ReadStage-2] | 2019-12-21 11:22:37.978000 | 127.0.0.1 |            551 | 127.0.0.1
+                                                Merging memtable contents [ReadStage-2] | 2019-12-21 11:22:37.978000 | 127.0.0.1 |            580 | 127.0.0.1
+                                   Read 1 live rows and 0 tombstone cells [ReadStage-2] | 2019-12-21 11:22:37.978000 | 127.0.0.1 |            765 | 127.0.0.1
+                                                                       Request complete | 2019-12-21 11:22:37.977876 | 127.0.0.1 |            876 | 127.0.0.1
+
+PUT:
+
+cqlsh:zagat> update recommendations set price = 'Update Test' where id=10000001;
+
+Tracing session: 74a7cd20-2427-11ea-9959-f5497a9cd533
+
+ activity                                                                                                  | timestamp                  | source    | source_elapsed | client
+-----------------------------------------------------------------------------------------------------------+----------------------------+-----------+----------------+-----------
+                                                                                        Execute CQL3 query | 2019-12-21 11:24:06.770000 | 127.0.0.1 |              0 | 127.0.0.1
+ Parsing update recommendations set price = 'Update Test' where id=10000001; [Native-Transport-Requests-1] | 2019-12-21 11:24:06.770000 | 127.0.0.1 |            142 | 127.0.0.1
+                                                         Preparing statement [Native-Transport-Requests-1] | 2019-12-21 11:24:06.770000 | 127.0.0.1 |            298 | 127.0.0.1
+                                           Determining replicas for mutation [Native-Transport-Requests-1] | 2019-12-21 11:24:06.773000 | 127.0.0.1 |           2607 | 127.0.0.1
+                                                                  Appending to commitlog [MutationStage-2] | 2019-12-21 11:24:06.773000 | 127.0.0.1 |           2801 | 127.0.0.1
+                                                      Adding to recommendations memtable [MutationStage-2] | 2019-12-21 11:24:06.773000 | 127.0.0.1 |           2863 | 127.0.0.1
+                                                                                          Request complete | 2019-12-21 11:24:06.773017 | 127.0.0.1 |           3017 | 127.0.0.1
+
+
+cqlsh:zagat> select * from recommendations where id=10000001;
+
+ id       | genre | price       | zecs
+----------+-------+-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 10000001 | Asian | Update Test | [{"pics":["https://s3-us-west-1.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image715.jpg"],"title":"O'Conner, Skiles and Kautzer","price":"$$$$","text":"Eos soluta possimus corporis cupiditate laboriosam voluptas culpa."}]
+
+(1 rows)
+
+Tracing session: 76cd6c40-2427-11ea-9959-f5497a9cd533
+
+ activity                                                                               | timestamp                  | source    | source_elapsed | client
+----------------------------------------------------------------------------------------+----------------------------+-----------+----------------+-----------
+                                                                     Execute CQL3 query | 2019-12-21 11:24:10.372000 | 127.0.0.1 |              0 | 127.0.0.1
+ Parsing select * from recommendations where id=10000001; [Native-Transport-Requests-1] | 2019-12-21 11:24:10.372000 | 127.0.0.1 |            126 | 127.0.0.1
+                                      Preparing statement [Native-Transport-Requests-1] | 2019-12-21 11:24:10.372000 | 127.0.0.1 |            219 | 127.0.0.1
+                      Executing single-partition query on recommendations [ReadStage-2] | 2019-12-21 11:24:10.373000 | 127.0.0.1 |            406 | 127.0.0.1
+                                             Acquiring sstable references [ReadStage-2] | 2019-12-21 11:24:10.373000 | 127.0.0.1 |            457 | 127.0.0.1
+                                                Merging memtable contents [ReadStage-2] | 2019-12-21 11:24:10.373000 | 127.0.0.1 |            488 | 127.0.0.1
+                                   Read 1 live rows and 0 tombstone cells [ReadStage-2] | 2019-12-21 11:24:10.373000 | 127.0.0.1 |            635 | 127.0.0.1
+                                                                       Request complete | 2019-12-21 11:24:10.372719 | 127.0.0.1 |            719 | 127.0.0.1
+
+DELETE:
+
+cqlsh:zagat> delete from recommendations where id=10000001;
+
+Tracing session: 920bc1f0-2427-11ea-9959-f5497a9cd533
+
+ activity                                                                             | timestamp                  | source    | source_elapsed | client
+--------------------------------------------------------------------------------------+----------------------------+-----------+----------------+-----------
+                                                                   Execute CQL3 query | 2019-12-21 11:24:56.079000 | 127.0.0.1 |              0 | 127.0.0.1
+ Parsing delete from recommendations where id=10000001; [Native-Transport-Requests-1] | 2019-12-21 11:24:56.079000 | 127.0.0.1 |            103 | 127.0.0.1
+                                    Preparing statement [Native-Transport-Requests-1] | 2019-12-21 11:24:56.079000 | 127.0.0.1 |            301 | 127.0.0.1
+                      Determining replicas for mutation [Native-Transport-Requests-1] | 2019-12-21 11:24:56.079000 | 127.0.0.1 |            444 | 127.0.0.1
+                                 Appending to commitlog [Native-Transport-Requests-1] | 2019-12-21 11:24:56.080000 | 127.0.0.1 |            583 | 127.0.0.1
+                     Adding to recommendations memtable [Native-Transport-Requests-1] | 2019-12-21 11:24:56.080000 | 127.0.0.1 |            617 | 127.0.0.1
+                                                                     Request complete | 2019-12-21 11:24:56.079743 | 127.0.0.1 |            743 | 127.0.0.1
+
+
+
+
+
+
+
