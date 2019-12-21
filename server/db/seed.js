@@ -19,7 +19,7 @@ const seed = (num) => {
   var genres = ['American', 'Asian', 'Mexican', 'Indian'];
   var prices = ['$', '$$', '$$$', '$$$$'];
 
-  for (var i = 1; i <= 1000; i++) {
+  for (var i = 1 + (num - 1) * 1000; i <= 1000 + (num - 1) * 1000; i++) {
 
     var genre = genres[Math.floor(Math.random() * Math.floor(genres.length))];
     var title1 = faker.company.companyName();
@@ -58,7 +58,7 @@ const seed = (num) => {
   csvWriter
     .writeRecords(data)
     .then(()=> {
-      console.log('The CSV file was written successfully');
+      //console.log('The CSV file was written successfully');
       if (num + 1 <= 10000){
         seed(num + 1);
       } else {
