@@ -1,7 +1,7 @@
 'use strict'
 
 exports.config = {
-  app_name: ['dan-service'],
+  app_name: ['dan-service-recommendations'],
   license_key: '8bf4f379c27f868d04089cf80e290eabf4baNRAL',
   logging: {
     level: 'trace',
