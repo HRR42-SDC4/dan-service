@@ -129,7 +129,7 @@ class Recommendation extends React.Component {
   }
 
   onRightClick() {
-    const lastIndex = this.props.rec.pics.length - 1;
+    const lastIndex = this.props.rec.pics.split(',').length - 1;
     const { imageIndex } = this.state;
     const shouldResetIndex = imageIndex === lastIndex;
     const index =  shouldResetIndex ? 0 : imageIndex + 1;
@@ -145,17 +145,17 @@ class Recommendation extends React.Component {
         <Picholder>
           <Picnavleft onClick={this.onLeftClick}></Picnavleft>
           <Pic>
-            <ImageSlide url={ this.props.rec.pics[this.state.imageIndex] }/>
+            <ImageSlide url={ this.props.rec.pics.split(',')[this.state.imageIndex] }/>
           </Pic>
           <Picnavright onClick={this.onRightClick}></Picnavright>
         </Picholder>
         <Recbody>
-          <Rectitle>{this.props.rec.title}</Rectitle>
+          <Rectitle>{this.props.rec.name}</Rectitle>
           <Recprice>{this.props.genre} <span>&#183;</span>  {this.props.rec.price}</Recprice>
           <Zagatrated>
             <Logo><img src="assets/logo.svg"/></Logo>ZAGAT RATED
           </Zagatrated>
-          <Rectext>{this.props.rec.text}</Rectext>
+          <Rectext>{this.props.rec.description}</Rectext>
         </Recbody>
       </Rec>
     );

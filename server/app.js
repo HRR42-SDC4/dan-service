@@ -1,3 +1,5 @@
+requrie('newrelic');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -14,7 +16,9 @@ app.use(express.static('client'));
 app.get('/api/restaurants/:restaurantId', (req, res) => {
   var id = req.params.restaurantId;
   db.get(id)
-    .then(data => res.send(data))
+    .then(data => {
+      res.send(data)
+    })
     .catch(err => console.log('GET Error:', err));
 });
 

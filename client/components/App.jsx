@@ -25,7 +25,7 @@ class App extends React.Component {
 
     this.state = {
       genre: '',
-      title: '',
+      name: '',
       recs: []
     };
 
@@ -42,10 +42,11 @@ class App extends React.Component {
       type: 'GET',
       url: 'api/restaurants/'+restaurantId,
       success: (data) => {
+        console.log('data', data);
         this.setState({
-          genre: data[0].genre,
-          title: data[0].title,
-          recs: data[0].recs
+          genre: data.genre,
+          name: data.name,
+          recs: data.recs
         });
       },
       failure: (err) => {
@@ -57,7 +58,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Recheader>More {this.state.genre} Near {this.state.title}</Recheader>
+        <Recheader>More {this.state.genre} Near {this.state.name}</Recheader>
         <Allrecs>
           {this.state.recs.map(rec => <Recommendation rec={rec} genre={this.state.genre}/>)}
         </Allrecs>
