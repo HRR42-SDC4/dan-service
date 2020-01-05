@@ -1,3 +1,5 @@
 npm
 node_modules/
 recommendations.csv
+bundle.js
+mongoDB

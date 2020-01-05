@@ -118,7 +118,7 @@ class Recommendation extends React.Component {
   }
 
   onLeftClick() {
-    const lastIndex = this.props.rec.pics.length - 1;
+    const lastIndex = this.props.rec.pics.split(',').length - 1;
     const { imageIndex } = this.state;
     const shouldResetIndex = imageIndex === 0;
     const index =  shouldResetIndex ? lastIndex : imageIndex - 1;
@@ -145,7 +145,7 @@ class Recommendation extends React.Component {
         <Picholder>
           <Picnavleft onClick={this.onLeftClick}></Picnavleft>
           <Pic>
-            <ImageSlide url={ this.props.rec.pics.split(',')[this.state.imageIndex] }/>
+            <ImageSlide url={`https://s3-us-west-1.amazonaws.com/hrr42-sdc4-recommendations.s3.us-west-1.amazonaws.com/image${this.props.rec.pics.split(',')[this.state.imageIndex]}.jpg`}/>
           </Pic>
           <Picnavright onClick={this.onRightClick}></Picnavright>
         </Picholder>

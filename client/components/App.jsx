@@ -37,12 +37,11 @@ class App extends React.Component {
   }
 
   get() {
-    const restaurantId = window.location.href.slice(36);
+    const restaurantId = window.location.href.slice(36) || 1;
     $.ajax({
       type: 'GET',
       url: 'api/restaurants/'+restaurantId,
       success: (data) => {
-        console.log('data', data);
         this.setState({
           genre: data.genre,
           name: data.name,

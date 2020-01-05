@@ -1,5 +1,4 @@
 const faker = require('faker');
-const Recs = require('./recs.js');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
 const csvWriter = createCsvWriter({
@@ -35,16 +34,15 @@ const seed = (num) => {
       recs: []
     }
 
-    const randomRecs = Math.floor(Math.random() * 3) + 3;
+    const randomRecs = Math.floor(Math.random() * 3) + 4;
     for (let j = 0; j < randomRecs; j++) {
       recommendationPage.recs.push(Math.floor(Math.random() * 10000000) + 1);
     }
 
-    const randomPics = Math.floor(Math.random() * 4) + 3;
+    const randomPics = Math.floor(Math.random() * 3) + 5;
     for (let k = 0; k < randomPics; k++) {
-      const photoNum = Math.floor(Math.random() * 812) + 1;
-      const picUrl = `https://s3-us-west-1.amazonaws.com/hrr42-sdc4.s3.us-west-1.amazonaws.com/image${photoNum}.jpg`;
-      recommendationPage.pics.push(picUrl);
+      const urlId = Math.floor(Math.random() * 707) + 1;
+      recommendationPage.pics.push(urlId);
     }
 
     data.push(recommendationPage);
@@ -56,7 +54,7 @@ const seed = (num) => {
       if (num + 1 <= 10000){
         seed(num + 1);
       } else {
-        console.log('All the CSV files were written successfully');
+        console.log('The CSV file was written successfully');
       }
     })
     .catch(err => console.log('ERROR:', err))
