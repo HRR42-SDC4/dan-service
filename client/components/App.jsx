@@ -37,7 +37,8 @@ class App extends React.Component {
   }
 
   get() {
-    const restaurantId = window.location.href.slice(36) || 1;
+    let params = (new URL(document.location)).searchParams;
+    let restaurantid = parseInt(params.get('restaurantid')) || 1;
     $.ajax({
       type: 'GET',
       url: 'api/restaurants/'+restaurantId,
