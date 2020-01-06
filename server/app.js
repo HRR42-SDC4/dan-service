@@ -8,6 +8,14 @@ const cassandra = require('cassandra-driver');
 const contactPoint = '13.57.211.243:9042' || '127.0.0.1' || '13.52.251.155';
 const client = new cassandra.Client({ contactPoints: [contactPoint], localDataCenter: 'datacenter1', keyspace: 'zagat' });
 
+client.connect((err) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('Cassandra connected');
+  }
+});
+
 const app = express();
 
 app.use(bodyParser.json());
