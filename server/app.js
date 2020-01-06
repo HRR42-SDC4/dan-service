@@ -15,6 +15,7 @@ app.use(express.static('client'));
 
 app.get('/api/restaurants/:restaurantId', (req, res) => {
   var id = req.params.restaurantId;
+  console.log('id', id);
   const query1 = `SELECT recs, genre, name FROM recommendations where id = ${id}`;
   client.execute(query1)
   .then((data) => {

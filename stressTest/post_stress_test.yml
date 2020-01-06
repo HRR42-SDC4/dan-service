@@ -1,0 +1,21 @@
+config:
+  target: 'http://localhost:3005'
+  processor: './infoGenerator.js'
+  phases:
+    - duration: 1
+      arrivalRate: 1000
+scenarios:
+  - flow:
+      - loop:
+          - function: 'generateInfo'
+          - post:
+                url: '/api/restaurants'
+                json:
+                  id: '{{ id }}'
+                  genre: '{{ genre }}'
+                  name: '{{ name }}'
+                  price: '{{ price }}'
+                  description: '{{ description }}'
+                  pics: '{{ pics }}'
+                  recs: '{{ recs }}'
+        count: 10

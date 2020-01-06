@@ -1,0 +1,13 @@
+config:
+  target: 'http://localhost:3005'
+  processor: './idGenerator.js'
+  phases:
+    - duration: 1
+      arrivalRate: 1000
+scenarios:
+  - flow:
+      - loop:
+          - function: 'generateId'
+          - get:
+              url: "/api/restaurants/{{ id }}"
+        count: 10
