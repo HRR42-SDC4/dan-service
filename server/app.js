@@ -70,5 +70,5 @@ app.post('/api/restaurants', (req, res) => {
 //     .catch(res.status(500).end())
 // })
 
-const port = 3005;
+const port = 3006;
 app.listen(port, () => console.log(`listening on port ${port}`));
