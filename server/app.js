@@ -5,7 +5,7 @@ const path = require('path');
 const cors = require('cors');
 const https = require('https');
 const cassandra = require('cassandra-driver');
-const contactPoint = '172.31.7.220:9042' || '127.0.0.1' || '172.31.12.109:9042';
+const contactPoint = '127.0.0.1' || '172.31.7.220';
 const client = new cassandra.Client({ contactPoints: [contactPoint], localDataCenter: 'datacenter1', keyspace: 'zagat' });
 
 client.connect((err) => {
