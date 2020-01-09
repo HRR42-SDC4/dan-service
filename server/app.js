@@ -5,7 +5,7 @@ const path = require('path');
 const cors = require('cors');
 const https = require('https');
 const cassandra = require('cassandra-driver');
-const contactPoint = 'localhost';
+const contactPoint = '172.31.16.63:9042';
 const client = new cassandra.Client({ contactPoints: [contactPoint], localDataCenter: 'datacenter1', keyspace: 'zagat' });
 
 client.connect((err) => {
@@ -24,7 +24,7 @@ app.use(express.static('client'));
 
 app.get('/api/restaurants/:restaurantId', (req, res) => {
   var id = req.params.restaurantId;
-  // console.log('id', id);
+  console.log('id', id);
   const query1 = `SELECT recs, genre, name FROM recommendations where id = ${id}`;
   client.execute(query1)
   .then((data) => {
