@@ -1,5 +1,5 @@
 config:
-  target: 'http://localhost:3005'
+  target: 'http://localhost:3006'
   processor: './idGenerator.js'
   phases:
     - duration: 1
