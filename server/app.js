@@ -1,5 +1,6 @@
 const nr = require('newrelic');
 const express = require('express');
+const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
@@ -18,12 +19,14 @@ client.connect((err) => {
 
 const app = express();
 
+app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static('client'));
 
 app.get('/api/restaurants/:restaurantId', (req, res) => {
   var id = req.params.restaurantId;
+  console.log('id',id);
   const query1 = `SELECT recs, genre, name FROM recommendations where id = ${id}`;
   client.execute(query1)
   .then((data) => {
