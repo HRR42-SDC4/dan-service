@@ -43,6 +43,7 @@ app.get('/api/restaurants/:restaurantId', (req, res) => {
 
 app.post('/api/restaurants', (req, res) => {
   const record = req.body;
+  console.log('record', record);
   const query1 = `INSERT INTO recommendations (id, genre, name, price, description, pics, recs) Values (${record.id}, '${record.genre}', '${record.name}', '${record.price}', '${record.description}', '${record.pics}', '${record.recs}')`;
   client.execute(query1)
     .then((result) => {
