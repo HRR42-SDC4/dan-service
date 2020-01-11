@@ -41,7 +41,7 @@ class App extends React.Component {
     let restaurantId = parseInt(params.get('restaurantid')) || 1;
     $.ajax({
       type: 'GET',
-      url: 'api/restaurants/'+restaurantId,
+      url: 'api/recommendations/'+restaurantId,
       success: (data) => {
         this.setState({
           genre: data.genre,

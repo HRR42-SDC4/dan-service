@@ -24,9 +24,9 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static('client'));
 
-app.get('/api/restaurants/:restaurantId', (req, res) => {
+app.get('/api/recommendations/:restaurantId', (req, res) => {
   var id = req.params.restaurantId;
-  console.log('id',id);
+  // console.log('id',id);
   const query1 = `SELECT recs, genre, name FROM recommendations where id = ${id}`;
   client.execute(query1)
   .then((data) => {
@@ -44,7 +44,7 @@ app.get('/api/restaurants/:restaurantId', (req, res) => {
   .catch(err => res.status(500).end());
 });
 
-app.post('/api/restaurants', (req, res) => {
+app.post('/api/recommendations', (req, res) => {
   const record = req.body;
   console.log('record', record);
   const query1 = `INSERT INTO recommendations (id, genre, name, price, description, pics, recs) Values (${record.id}, '${record.genre}', '${record.name}', '${record.price}', '${record.description}', '${record.pics}', '${record.recs}')`;
