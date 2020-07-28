@@ -1,9 +1,8 @@
 # service-Dan
 
-> ZagatRe is a website that provides the functionality to view the detailed inforamtion of 10 million restaurants with high throughput and low latency.
+> This repo is the recommendation part for the website ZagatRe. ZagatRe is a website that provides the functionality to view the detailed inforamtion of 10 million restaurants with high throughput and low latency. Each retaurant page would have image carousel, description, and recommendation parts.
 
 ## Related Projects
-
   - https://github.com/hrr42-fec5/service-tom
   - https://github.com/HRR42-SDC4/stacy-service
   - https://github.com/HRR42-SDC4/john-service
