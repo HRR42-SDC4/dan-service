@@ -1,10 +1,13 @@
 # service-Dan
 
-> Recommended restaurants page of Zagat
+> ZagatRe is a website that provides the functionality to view the detailed inforamtion of 10 million restaurants with high throughput and low latency.
 
 ## Related Projects
 
   - https://github.com/hrr42-fec5/service-tom
+  - https://github.com/HRR42-SDC4/stacy-service
+  - https://github.com/HRR42-SDC4/john-service
+
 
 ## Recommendation CRUD API:
 - Create/POST http://localhost:3005/api/restaurants
